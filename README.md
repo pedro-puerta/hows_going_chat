@@ -1,34 +1,25 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## How's going chat Project
 
-## Getting Started
+Este é um projeto acadêmico criado por [Pedro Silverio Puerta](https://github.com/pedro-puerta) e [Adalto de Almeida Linhares Santos](https://github.com/adaltospjr), a ideia do projeto é criar uma aplicação simples de um chat, para aplicar conceitos de computação em nuvem.
 
-First, run the development server:
+## Tecnologias e linguagens ultilizadas neste projeto
+
+Dentre as tecnologias, linguagens e framewoks ultilizadas no projeto estão:
+
+- HTML5 & CSS3;
+- JavaScript;
+- React & Next.JS.
+
+## Rodando a aplicação
+
+Primeiro, execute o servidor de desenvolvimento (pelo cmd entre na pasta do projeto e execute o comendo abaixo):
 
 ```bash
 npm run dev
-# or
+# ou
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra [http://localhost:3000](http://localhost:3000) com seu navegador para ver o resultado.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+A página inicial do projeto (página de login) pode ser acessada por [http://localhost:3000/chat_pages/login](http://localhost:3000/chat_pages/login)
