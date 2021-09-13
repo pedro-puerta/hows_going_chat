@@ -1,6 +1,6 @@
 ## How's going chat Project
 
-Este é um projeto acadêmico criado por [Pedro Silverio Puerta](https://github.com/pedro-puerta) e [Adalto de Almeida Linhares Santos](https://github.com/adaltospjr), a ideia do projeto é criar uma aplicação simples de um chat, para aplicar conceitos de computação em nuvem.
+Este é um projeto acadêmico criado por [Pedro Silverio Puerta](https://github.com/pedro-puerta) e [Adalto de Almeida Linhares Santos](https://github.com/adaltospjr), a ideia do projeto é criar uma aplicação simples de um chat para aplicar conceitos de computação em nuvem.
 
 ## Tecnologias e linguagens ultilizadas neste projeto
 
@@ -12,7 +12,7 @@ Dentre as tecnologias, linguagens e framewoks ultilizadas no projeto estão:
 
 ## Rodando a aplicação
 
-Primeiro, execute o servidor de desenvolvimento (pelo cmd entre na pasta do projeto e execute o comendo abaixo):
+Primeiro, execute o servidor de desenvolvimento (pelo cmd entre na pasta do projeto e execute o comando abaixo):
 
 ```bash
 npm run dev
