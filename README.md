@@ -6,7 +6,7 @@ Este é um projeto acadêmico criado por [Pedro Silverio Puerta](https://github.
 
 Dentre as tecnologias, linguagens e framewoks ultilizadas no projeto estão:
 
-- HTML5 & CSS3;
+- CSS3;
 - JavaScript;
 - React & Next.JS.
 
