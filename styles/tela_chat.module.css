@@ -1,0 +1,19 @@
+.tela{
+    background: #75787a;
+    padding: 20px;
+    margin: 0 1% 0 1%;
+    border-radius: 10px;
+    text-align: right;
+}
+.tela input {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #bcc0c2;
+    width: 100%;
+    border: 0;
+    margin: 10% 0% 0% 0%;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 20px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  }
