@@ -1,5 +1,8 @@
+// Importando o estilo deste componente:
 import styles from "../styles/footer.module.css"
 
+
+// Este componente é o roda pá da aplicação podendo ser "chamado" através da <Footer/>
 export default function Footer(props){
     return (
         <div className={styles.footer}>
