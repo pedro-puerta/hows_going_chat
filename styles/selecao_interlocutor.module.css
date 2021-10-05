@@ -11,30 +11,25 @@
     background: #bcc0c2;
     width: 100%;
     border: 0;
-    margin: 10% 0% 0% 0%;
     padding: 15px;
     box-sizing: border-box;
     font-size: 20px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   }
 
-.tela h1 {
+  .tela ul li {
+    text-align: left;
     color: #bcc0c2;
-    text-align: center;
-    margin: 0% 0% 5% 0%;
-}
+    font-size: 30px;
+  }
 
-.txt_sobre_tela {
-    color: #4CAF50;
-    margin: 0% 0% 0% 1%;
-    font-size: 20px;
-    display: flex;
-}
-
-.txt_sobre_tela .voltar {
-    margin: 0% 0% 1% 1%;
-}
-
-.txt_sobre_tela .logout {
-    margin: 0% 0% 1% 85%;
-}
+  .txt_sobre_tela {
+      color: #4CAF50;
+      margin: 0% 0% 0% 1%;
+      font-size: 20px;
+      display: flex;
+  }
+  
+  .txt_sobre_tela .logout {
+      margin: 0% 0% 1% 85%;
+  }

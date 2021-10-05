@@ -11,7 +11,8 @@ export default function Login(props){
                 <form className={styles.loginForm}>
                     <input type="text" placeholder="username"/>
                     <input type="password" placeholder="password"/>
-                    <Link href="/chat_pages/tela_chat"><button>login</button></Link>
+                    <Link href="/chat_pages/selecao_interlocutor"><button>login</button></Link>
+                    <Link href="/chat_pages/cadastro"><p style={{color: "#ddd"}}>Crie uma conta</p></Link>
                 </form>
             </div>
         </div>
