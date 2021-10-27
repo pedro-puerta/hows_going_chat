@@ -10,5 +10,5 @@ export default function Msg_recebida(props){
     // o estilo de mensagem recebida, caso contrário receberá o estilo de 
     // mensagem enviada.
     let statusMsg = props.status == "recebida" ? styles.msg_r : styles.msg_e
-    return <div className={statusMsg}></div>
+    return <div className={statusMsg}>{props.conteudo}</div>
 }

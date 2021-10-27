@@ -23,6 +23,7 @@
 
   .msg_r {
     width: 90%;
+    text-align: left;
     margin: 20px auto;
     background: #bcc0c2;
     padding: 20px;
