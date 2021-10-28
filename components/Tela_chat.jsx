@@ -4,6 +4,7 @@ import styles from "../styles/tela_chat.module.css"
 import Msg from "./Msg"
 import Link from "next/link"
 import { useState } from "react"
+import { enviaMsg_API, recebeMsg_API } from "../public/js/api"
 
 
 // Esse componenente é onde a conversa do chat acontece.
@@ -13,21 +14,29 @@ export default function Tela(props){
 
     const [mensagens, setMensagens] = useState([])
 
+    let recebidas = recebeMsg_API("usuario")
+
+    let msg_recebidas = []
+
+    for (i in recebidas){
+        if (i["from"] == "interlocutor"){
+            msg_recebidas.push(i["msg"])
+        }
+    }
+
+    setMensagens(mensagens => [...mensagens, msg_recebidas])
+
     function envia_msg(){
         let mensagem = <Msg conteudo={caixa}/>
-        // Posso inserir a mensagem no banco aqui!
-        // setMensagens(mensagens.push(mensagem)) --> ERRADO!!!
+        const dados = {
+            "to": "Padrão",
+            "from": "Padrão",
+            "msg": caixa
+        }
+        enviaMsg_API(dados)
         setMensagens(mensagens => [...mensagens, mensagem])
         setCaixa("")
     }
-    
-    const teste = [
-        <Msg conteudo="teste1"/>,
-        <Msg conteudo="teste2"/>,
-        <Msg conteudo="teste3"/>,
-        <Msg conteudo="teste4"/>,
-        <Msg conteudo="teste5"/>
-    ]
 
     return (
         <>
