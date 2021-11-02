@@ -4,7 +4,7 @@ import styles from "../styles/tela_chat.module.css"
 import Msg from "./Msg"
 import Link from "next/link"
 import { useState } from "react"
-import { enviaMsg_API, recebeMsg_API } from "../public/scripts/api"
+import { enviaMsg_API, mensagens_recebidas } from "../public/scripts/api"
 
 
 // Esse componenente é onde a conversa do chat acontece.
@@ -27,14 +27,13 @@ export default function Tela(props){
     }
 
     function recebe_msg(){
-        const dados = {
-            "from": "Padrão",
-            "to": "Padrão"
+        const lista_mensagens = mensagens_recebidas("Padrão", "Padrão")
+        let lista_msg_component = []
+        for (i in lista_mensagens){
+            let msg_component = <Msg status="recebida" conteudo ={i}/>
+            lista_msg_component.push(msg_component)
         }
-        let response = recebeMsg_API(dados)
-        for (i in response){
-            alert(i)
-        }
+        setMensagens(mensagens => [...mensagens, lista_msg_component])
     }
 
     return (
