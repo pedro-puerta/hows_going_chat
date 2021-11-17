@@ -1,28 +1,20 @@
-export function enviaMsg_API(data) {
+export function PostMsg(corpo) {
+    let jsondata = JSON.stringify(corpo)
+    const xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "https://o5bbyytss4.execute-api.us-east-1.amazonaws.com/prod");
+    xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhttp.send(jsondata);
+}
+
+export function GetMsg(from, to) {
     const xhttp = new XMLHttpRequest()
-    let jsondata = JSON.stringify(data)
-    xhttp.open("POST", "https://u5niarwjq0.execute-api.us-east-1.amazonaws.com/teste")
+
+    var consulta = "?from=" + from + "&to=" + to
+    xhttp.open("GET", "https://o5bbyytss4.execute-api.us-east-1.amazonaws.com/prod" + consulta)
     xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
-    xhttp.send(jsondata)
+    xhttp.send()
+    console.log(xhttp.responseText)
 }
 
 
-export function mensagens_recebidas(from, to){
-    lista_mensagens = get_all_API()
-    mensagens_filtradas = []
-    for (i in lista_mensagens){
-        if (i["from"] == from && i["to"] == to){
-            mensagens_filtradas.push(i["msg"])
-        }
-    }
-    return mensagens_filtradas
-}
 
-
-function get_all_API() { // retorna um dicionário com todas as mensagens do banco
-    var xhr = new XMLHttpRequest()
-    xhr.withCredentials = true
-    xhr.open("GET", "https://u5niarwjq0.execute-api.us-east-1.amazonaws.com/teste/getall")
-    xhr.send()
-    return xhr.responseXML
-}

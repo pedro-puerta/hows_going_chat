@@ -5,7 +5,7 @@
     border-radius: 10px;
     text-align: right;
 }
-.tela input {
+.msg {
     font-family: "Roboto", sans-serif;
     outline: 0;
     background: #bcc0c2;
@@ -20,7 +20,7 @@
 
 .tela h1 {
     color: #bcc0c2;
-    text-align: center;
+    text-align: right;
     margin: 0% 0% 5% 0%;
 }
 

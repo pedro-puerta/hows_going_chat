@@ -4,37 +4,42 @@ import styles from "../styles/tela_chat.module.css"
 import Msg from "./Msg"
 import Link from "next/link"
 import { useState } from "react"
-import { enviaMsg_API, mensagens_recebidas } from "../public/scripts/api"
+import { PostMsg, GetMsg } from "../public/scripts/api"
 
 
 // Esse componenente é onde a conversa do chat acontece.
 export default function Tela(props){
 
-    const [caixa, setCaixa] = useState("")
+    const [inputMsg, setInputMsg] = useState("")
+
+    const [inputFrom, setInputFrom] = useState("")
+
+    const [inputTo, setInputTo] = useState("")
 
     const [mensagens, setMensagens] = useState([])
 
     function envia_msg(){
-        let mensagem = <Msg conteudo={caixa}/>
+        let mensagem = <Msg conteudo={inputMsg}/>
         const dados = {
-            "to": "Padrão",
-            "from": "Padrão",
-            "msg": caixa
+            "to": inputTo,
+            "from": inputFrom,
+            "msg": inputMsg
         }
-        enviaMsg_API(dados)
+        PostMsg(dados)
         setMensagens(mensagens => [...mensagens, mensagem])
-        setCaixa("")
+        setInputMsg("")
     }
 
     function recebe_msg(){
-        const lista_mensagens = mensagens_recebidas("Padrão", "Padrão")
-        let lista_msg_component = []
-        for (i in lista_mensagens){
-            let msg_component = <Msg status="recebida" conteudo ={i}/>
-            lista_msg_component.push(msg_component)
-        }
-        setMensagens(mensagens => [...mensagens, lista_msg_component])
+        GetMsg(inputFrom, inputTo)
+        // let mensagens_get = GetMsg(inputFrom, inputTo)
+
+        // for (let i = 0; i < mensagens_get.length; i++ ){
+        //     let loop = <Msg conteudo={mensagens_get[i]["msg"]}/>
+        //     setMensagens(mensagens => [...mensagens, loop])
+        // }
     }
+    
 
     return (
         <>
@@ -43,11 +48,12 @@ export default function Tela(props){
             <Link href="/chat_pages/login"><p className={styles.logout}>Logout</p></Link>
         </div>
         <div className={styles.tela}>
-            <h1>Nome do Interlocutor</h1>
+            <input type="text" value={inputFrom} onChange={e => setInputFrom(e.target.value)} placeholder="De"/>
+            <input type="text" value={inputTo} onChange={e => setInputTo(e.target.value)} placeholder="Para"/>
+            <button onClick={recebe_msg}>Conectar</button>
             {mensagens}
-            <input type="text" value={caixa} onChange={e => setCaixa(e.target.value)} placeholder="Digite sua mensagem..."/>
+            <input className={styles.msg} type="text" value={inputMsg} onChange={e => setInputMsg(e.target.value)} placeholder="Digite sua mensagem..."/>
             <button onClick={envia_msg}>Enviar</button>
-            <button onClick={recebe_msg}>Recebe</button>
             </div>
         </>
     )
