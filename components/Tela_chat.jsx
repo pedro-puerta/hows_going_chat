@@ -4,7 +4,7 @@ import styles from "../styles/tela_chat.module.css"
 import Msg from "./Msg"
 import Link from "next/link"
 import { useState } from "react"
-import { PostMsg, GetMsg } from "../public/scripts/api"
+import { PostMsg } from "../public/scripts/api"
 
 
 // Esse componenente é onde a conversa do chat acontece.
@@ -31,13 +31,22 @@ export default function Tela(props){
     }
 
     function recebe_msg(){
-        GetMsg(inputFrom, inputTo)
-        // let mensagens_get = GetMsg(inputFrom, inputTo)
+        var xhr = new XMLHttpRequest();
+        xhr.addEventListener("readystatechange", function() {
+        if(this.readyState === 4) {
+            console.log(this.responseText)
+            let resposta = JSON.parse(this.responseText);
+            let mensagens_get = JSON.parse(resposta["body"]);
 
-        // for (let i = 0; i < mensagens_get.length; i++ ){
-        //     let loop = <Msg conteudo={mensagens_get[i]["msg"]}/>
-        //     setMensagens(mensagens => [...mensagens, loop])
-        // }
+            for (let i = 0; i < mensagens_get.length; i++ ){
+                let mensagem = <Msg conteudo={mensagens_get[i]["msg"]}/>
+                setMensagens(mensagens => [...mensagens, mensagem])
+            }
+        }});
+        var consulta = "?from=" + inputFrom + "&to=" + inputTo
+        xhr.open("GET", "https://o5bbyytss4.execute-api.us-east-1.amazonaws.com/prod" + consulta);
+        xhr.send();
+        
     }
     
 
