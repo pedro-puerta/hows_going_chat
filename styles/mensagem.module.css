@@ -1,7 +1,8 @@
   .msg_e {
     width: 90%;
     margin: 20px auto;
-    background: #bcc0c2;;
+    background: #bcc0c2;
+    font-size: 20pt;
     padding: 20px;
     color: #fff;
     position: relative;
@@ -24,6 +25,7 @@
   .msg_r {
     width: 90%;
     text-align: left;
+    font-size: 20pt;
     margin: 20px auto;
     background: #bcc0c2;
     padding: 20px;
@@ -43,4 +45,10 @@
     border-bottom: 10px solid transparent;
     left: -19px;
     top: 6px;
+  }
+
+  .date_time {
+    font-style: italic;
+    font-size: 15pt;
+    color: rgba(255, 255, 255, 0.753);
   }

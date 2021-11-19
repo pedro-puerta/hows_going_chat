@@ -30,25 +30,45 @@ export default function Tela(props){
         setInputMsg("")
     }
 
-    function recebe_msg(){
-        var xhr = new XMLHttpRequest();
-        xhr.addEventListener("readystatechange", function() {
-        if(this.readyState === 4) {
-            console.log(this.responseText)
-            let resposta = JSON.parse(this.responseText);
-            let mensagens_get = JSON.parse(resposta["body"]);
+    function resgata_msg(){
 
-            for (let i = 0; i < mensagens_get.length; i++ ){
-                let mensagem = <Msg conteudo={mensagens_get[i]["msg"]}/>
-                setMensagens(mensagens => [...mensagens, mensagem])
-            }
-        }});
-        var consulta = "?from=" + inputFrom + "&to=" + inputTo
+        // Primeiro GET para trazer as mensagens enviadas:
+
+        let xhr = new XMLHttpRequest();
+        xhr.addEventListener("readystatechange", function() {
+            if(this.readyState === 4) {
+                let resposta = JSON.parse(this.responseText);
+                if (resposta != null){
+                    let mensagens_get = JSON.parse(resposta["body"]);
+                    for (let i = 0; i < mensagens_get.length; i++){
+                        let mensagem = <Msg date_time={mensagens_get[i]["date_time"]} conteudo={mensagens_get[i]["msg"]}/>
+                        setMensagens(mensagens => [...mensagens, mensagem])
+                    }
+                }
+            }});
+        let consulta = "?from=" + inputFrom + "&to=" + inputTo
         xhr.open("GET", "https://o5bbyytss4.execute-api.us-east-1.amazonaws.com/prod" + consulta);
         xhr.send();
-        
+
+        // Segundo GET para trazer as mensagens recebidas:
+
+        let xhr_recebida = new XMLHttpRequest();
+        xhr_recebida.addEventListener("readystatechange", function() {
+            if(this.readyState === 4) {
+                let resposta_recebida = JSON.parse(this.responseText);
+                if (resposta_recebida != null){
+                    let mensagens_get_recebida = JSON.parse(resposta_recebida["body"]);
+                    for (let a = 0; a < mensagens_get_recebida.length; a++ ){
+                        let mensagem_recebida = <Msg status="recebida" date_time={mensagens_get_recebida[a]["date_time"]} conteudo={mensagens_get_recebida[a]["msg"]}/>
+                        setMensagens(mensagens => [...mensagens, mensagem_recebida])
+                    }
+                }
+            }});
+        let consulta_recebida = "?from=" + inputTo + "&to=" + inputFrom
+        xhr_recebida.open("GET", "https://o5bbyytss4.execute-api.us-east-1.amazonaws.com/prod" + consulta_recebida);
+        xhr_recebida.send();
+
     }
-    
 
     return (
         <>
@@ -59,7 +79,7 @@ export default function Tela(props){
         <div className={styles.tela}>
             <input type="text" value={inputFrom} onChange={e => setInputFrom(e.target.value)} placeholder="De"/>
             <input type="text" value={inputTo} onChange={e => setInputTo(e.target.value)} placeholder="Para"/>
-            <button onClick={recebe_msg}>Conectar</button>
+            <button onClick={resgata_msg}>Conectar</button>
             {mensagens}
             <input className={styles.msg} type="text" value={inputMsg} onChange={e => setInputMsg(e.target.value)} placeholder="Digite sua mensagem..."/>
             <button onClick={envia_msg}>Enviar</button>
